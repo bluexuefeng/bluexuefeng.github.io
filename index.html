@@ -46,12 +46,32 @@
             text-decoration: underline;
             color: #00b377;
         }
+
+        nav {
+            margin: 20px 0;
+        }
+
+        nav a {
+            color: #00ffe1;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            color: #00b377;
+        }
     </style>
 </head>
 <body>
     <header>
         <h1>欢迎来到我的个人主页</h1>
         <p>你好！我是[冯雪锋]，一名热爱学习的大学生。</p>
+        <nav>
+            <a href="index.html">首页</a>
+            <a href="about.html">关于我</a>
+            <a href="contact.html">联系我</a>
+        </nav>
     </header>
     <section id="skills">
         <h2>技能</h2>
@@ -65,13 +85,13 @@
     <section id="projects">
         <h2>项目</h2>
         <ul>
-            <li><a href="#" class="project-link">项目1</a></li>
-            <li><a href="#" class="project-link">项目2</a></li>
-            <li><a href="#" class="project-link">项目3</a></li>
+            <li><a href="project1.html" class="project-link">项目1</a></li>
+            <li><a href="project2.html" class="project-link">项目2</a></li>
+            <li><a href="project3.html" class="project-link">项目3</a></li>
         </ul>
     </section>
     <footer>
-        <p>&copy; 2024 [冯雪锋] | <a href="#skills">技能</a> | <a href="#projects">项目</a></p>
+        <p>&copy; 2024 [冯雪锋]</p>
     </footer>
     <script>
         document.querySelectorAll('.project-link').forEach(link => {
@@ -83,4 +103,3 @@
     </script>
 </body>
 </html>
-  
