@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人介绍</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #f8f9fa, #e9ecef);
+            color: #333;
+        }
+
+        header {
+            text-align: center;
+            padding: 50px;
+            background-color: #343a40;
+            color: white;
+        }
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        h2 {
+            margin-top: 40px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+        }
+
+        .project-link {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .project-link:hover {
+            text-decoration: underline;
+            color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>欢迎来到我的个人主页</h1>
+        <p>你好！我是[你的名字]，一名热爱学习的大学生。</p>
+    </header>
+    <section id="skills">
+        <h2>技能</h2>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>Python</li>
+        </ul>
+    </section>
+    <section id="projects">
+        <h2>项目</h2>
+        <ul>
+            <li><a href="#" class="project-link">项目1</a></li>
+            <li><a href="#" class="project-link">项目2</a></li>
+            <li><a href="#" class="project-link">项目3</a></li>
+        </ul>
+    </section>
+    <footer>
+        <p>&copy; 2024 [你的名字] | <a href="#skills">技能</a> | <a href="#projects">项目</a></p>
+    </footer>
+    <script>
+        document.querySelectorAll('.project-link').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                alert('你点击了 ' + e.target.innerText + '！');
+            });
+        });
+    </script>
+</body>
+</html>
