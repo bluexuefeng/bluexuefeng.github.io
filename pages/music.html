@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我喜欢的音乐</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <style>
+        body {
+            background: linear-gradient(135deg, #f0f4f8, #d9e4f5);
+            color: #333;
+            font-family: 'Arial', sans-serif;
+        }
+        .music-list .music-item {
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .music-list .music-item:hover {
+            background-color: #e9ecef;
+        }
+        .music-player {
+            margin-top: 20px;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .music-player audio {
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 5px;
+            outline: none;
+        }
+        .progress {
+            margin-top: 10px;
+            height: 10px;
+            border-radius: 5px;
+            background-color: #e9ecef;
+            overflow: hidden;
+        }
+        .progress-bar {
+            height: 100%;
+            background-color: #007bff;
+        }
+        .lyrics {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            max-height: 300px;
+            overflow-y: auto;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            line-height: 1.6;
+            text-align: left;
+            font-size: 16px;
+        }
+        .lyrics span {
+            display: block; /* 每行歌词占一行 */
+            transition: color 0.3s ease; /* 添加过渡效果 */
+        }
+        .lyrics span.active {
+            color: #007bff;
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+        .back-home {
+            margin-top: 20px;
+        }
+        /* 按钮样式 */
+        .control-buttons {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .btn {
+            margin: 0 10px;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 20px;
+        }
+        .btn-play {
+            background-color: #28a745;
+            color: white;
+        }
+        .btn-play:hover {
+            background-color: #218838;
+        }
+        .btn-pause {
+            background-color: #ffc107;
+            color: white;
+        }
+        .btn-pause:hover {
+            background-color: #e0a800;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="back-home text-center">
+        <a href="../index.html" class="btn btn-outline-primary">
+            <i class="fas fa-home"></i> 
+        </a>
+    </div>
+
+    <h1 class="text-center my-4">我喜欢的音乐</h1>
+
+    <div class="music-list">
+        <div class="music-item p-3 border mb-2" data-music="haiyouwo.mp3" data-lyrics="haiyouwo.txt">
+            <h5>🎵 还有我 - 翻自(任贤齐)女生版</h5>
+        </div>
+        <div class="music-item p-3 border mb-2" data-music="song2.mp3" data-lyrics="lyrics2.txt">
+            <h5>🎵 歌曲 2 - 歌手 2</h5>
+        </div>
+        <div class="music-item p-3 border mb-2" data-music="song3.mp3" data-lyrics="lyrics3.txt">
+            <h5>🎵 歌曲 3 - 歌手 3</h5>
+        </div>
+    </div>
+
+    <div class="music-player d-none">
+        <h3 id="current-song-title"></h3>
+        <audio id="music-player" controls>
+            <source id="music-source" src="" type="audio/mp3">
+            你的浏览器不支持音频播放。
+        </audio>
+        <div class="progress">
+            <div class="progress-bar" id="progress-bar" role="progressbar"></div>
+        </div>
+        <div class="control-buttons">
+            <button id="play-btn" class="btn btn-play"><i class="fas fa-play"></i></button>
+            <button id="pause-btn" class="btn btn-pause d-none"><i class="fas fa-pause"></i></button>
+        </div>
+        <div class="lyrics mt-3" id="lyrics"></div>
+    </div>
+</div>
+
+<script>
+    let currentLyrics = [];
+    let currentIndex = 0;
+
+    // 音乐列表点击事件
+    document.querySelectorAll('.music-item').forEach(item => {
+        item.addEventListener('click', function () {
+            const songTitle = this.querySelector('h5').textContent;
+            const songFile = this.getAttribute('data-music');
+            const lyricsFile = this.getAttribute('data-lyrics');
+
+            // 显示音乐播放器
+            document.querySelector('.music-player').classList.remove('d-none');
+            document.getElementById('current-song-title').textContent = songTitle;
+            document.getElementById('music-source').src = `../assets/music/${songFile}`;
+            document.getElementById('music-player').load();
+
+            // 加载歌词并处理
+            fetch(`../assets/music/${lyricsFile}`)
+                .then(response => response.text())
+                .then(data => {
+                    currentLyrics = data.split('\n').filter(line => line.trim() !== '');
+                    displayLyrics();
+                })
+                .catch(err => {
+                    document.getElementById('lyrics').textContent = "无法加载歌词，请稍后再试。";
+                });
+
+            // 重置播放状态
+            document.getElementById('music-player').pause();
+            document.getElementById('progress-bar').style.width = '0%';
+            currentIndex = 0;
+            highlightCurrentLine(currentIndex);
+        });
+    });
+
+    // 显示歌词并逐行高亮
+    function displayLyrics() {
+        const lyricsContainer = document.getElementById('lyrics');
+        lyricsContainer.innerHTML = currentLyrics.map((line, index) => `<span id="line-${index}">${line}</span>`).join('<br>');
+    }
+
+    // 更新歌词的高亮显示
+    function highlightCurrentLine(index) {
+        document.querySelectorAll('.lyrics span').forEach(span => span.classList.remove('active'));
+        if (document.getElementById(`line-${index}`)) {
+            document.getElementById(`line-${index}`).classList.add('active');
+            document.getElementById('lyrics').scrollTop = document.getElementById(`line-${index}`).offsetTop - 100;
+        }
+    }
+
+    // 监听播放器时间更新，更新进度条和歌词
+    document.getElementById('music-player').addEventListener('timeupdate', function () {
+        const player = this;
+        const currentTime = player.currentTime;
+        const duration = player.duration;
+
+        // 更新进度条
+        if (duration > 0) {
+            const progressPercent = (currentTime / duration) * 100;
+            document.getElementById('progress-bar').style.width = `${progressPercent}%`;
+        }
+
+        // 假设每行歌词的持续时间相等，简单处理
+        const lineDuration = duration / currentLyrics.length;
+        const currentLineIndex = Math.floor(currentTime / lineDuration);
+
+        // 如果当前行有变化则更新高亮
+        if (currentLineIndex !== currentIndex) {
+            currentIndex = currentLineIndex;
+            highlightCurrentLine(currentIndex);
+        }
+    });
+
+    // 播放和暂停按钮事件
+    document.getElementById('play-btn').addEventListener('click', function () {
+        document.getElementById('music-player').play();
+        this.classList.add('d-none');
+        document.getElementById('pause-btn').classList.remove('d-none');
+    });
+
+    document.getElementById('pause-btn').addEventListener('click', function () {
+        document.getElementById('music-player').pause();
+        this.classList.add('d-none');
+        document.getElementById('play-btn').classList.remove('d-none');
+    });
+</script>
+
+</body>
+</html>
+

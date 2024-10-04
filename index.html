@@ -3,103 +3,240 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>个人介绍</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(to right, #f8f9fa, #e9ecef);
-            color: #333;
-        }
-
-        header {
-            text-align: center;
-            padding: 50px;
-            background-color: #343a40;
-            color: white;
-        }
-
-        h1 {
-            font-size: 2.5em;
-        }
-
-        h2 {
-            margin-top: 40px;
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        li {
-            margin: 10px 0;
-        }
-
-        .project-link {
-            color: #00ffe1;
-            text-decoration: none;
-        }
-
-        .project-link:hover {
-            text-decoration: underline;
-            color: #00b377;
-        }
-
-        nav {
-            margin: 20px 0;
-        }
-
-        nav a {
-            color: #00ffe1;
-            text-decoration: none;
-            margin: 0 15px;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
-            color: #00b377;
-        }
-    </style>
+    <title>个人主页</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="assets/images/background.jpg">
+    
 </head>
 <body>
-    <header>
-        <h1>欢迎来到我的个人主页</h1>
-        <p>你好！我是[冯雪锋]，一名热爱学习的大学生。</p>
+
+    <!-- 头部 -->
+    <header class="bg-dark text-white text-center py-4">
+        <img src="assets/images/avatar.png" alt="头像" class="rounded-circle mb-3" width="150">
+        <h1>你好，我是 [冯雪峰]</h1>
+        <p>计算机科学与技术专业 | 河北科技大学</p>
         <nav>
-            <a href="index.html">首页</a>
-            <a href="about.html">关于我</a>
-            <a href="contact.html">联系我</a>
+            <a href="pages/about.html" class="text-white mx-3">关于</a>
+            <a href="pages/contact.html" class="text-white mx-3">联系</a>
         </nav>
     </header>
-    <section id="skills">
-        <h2>技能</h2>
-        <ul>
-            <li>HTML</li>
-            <li>CSS</li>
-            <li>JavaScript</li>
-            <li>Python</li>
-        </ul>
-    </section>
-    <section id="projects">
-        <h2>项目</h2>
-        <ul>
-            <li><a href="project1.html" class="project-link">项目1</a></li>
-            <li><a href="project2.html" class="project-link">项目2</a></li>
-            <li><a href="project3.html" class="project-link">项目3</a></li>
-        </ul>
-    </section>
-    <footer>
-        <p>&copy; 2024 [冯雪锋]</p>
+
+    <!-- 主要内容 -->
+    <main class="container mt-5">
+        <!-- 作品展示 -->
+        <section>
+            <h2>作品展示</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="assets/images/project.png"  class="card-img-top" alt="项目1">
+                        <div class="card-body">
+                            <h5 class="card-title">在线工具箱</h5>
+                            <p class="card-text">提供一些简单的在线网页工具</p>
+                            <a href="https://github.com/bluexuefeng/my-online-tools" class="btn btn-primary">查看项目</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 其他项目 -->
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="assets/images/project.png"  class="card-img-top" alt="项目1" >
+                        <div class="card-body">
+                            <h5 class="card-title">在线工具箱</h5>
+                            <p class="card-text">提供一些简单的在线网页工具</p>
+                            <a href="https://github.com/bluexuefeng/my-online-tools" class="btn btn-primary">查看项目</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="assets/images/project.png"  class="card-img-top" alt="项目1">
+                        <div class="card-body">
+                            <h5 class="card-title">在线工具箱</h5>
+                            <p class="card-text">提供一些简单的在线网页工具</p>
+                            <a href="https://github.com/bluexuefeng/my-online-tools" class="btn btn-primary">查看项目</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="col-md-4">
+                    <div class="card mb-4">
+                        <img src="assets/images/project.jpg"  class="card-img-top" alt="项目1" height="250" width="20">
+                        <div class="card-body">
+                            <h5 class="card-title">在线工具箱</h5>
+                            <p class="card-text">提供一些简单的在线网页工具</p>
+                            <a href="https://github.com/bluexuefeng/my-online-tools" class="btn btn-primary">查看项目</a>
+                        </div>
+                    </div>
+                </div> -->
+                <!-- 可复制以上结构 -->
+            </div>
+        </section>
+
+        <!-- 技能展示 -->
+        <section class="mt-5">
+            <h2>技能</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center shadow">
+                        <div class="card-body">
+                            <i class="fab fa-html5 fa-3x mb-3" style="color: #E44D26;"></i>
+                            <h5 class="card-title">HTML</h5>
+                            <a href="html_intro.html" class="btn btn-primary">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center shadow">
+                        <div class="card-body">
+                            <i class="fab fa-css3-alt fa-3x mb-3" style="color: #1572B6;"></i>
+                            <h5 class="card-title">CSS</h5>
+                            <a href="css_intro.html" class="btn btn-primary">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center shadow">
+                        <div class="card-body">
+                            <i class="fab fa-js-square fa-3x mb-3" style="color: #F7DF1E;"></i>
+                            <h5 class="card-title">JavaScript</h5>
+                            <a href="javascript_intro.html" class="btn btn-primary">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 添加 C 语言 -->
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center shadow">
+                        <div class="card-body">
+                            <i class="fas fa-code fa-3x mb-3" style="color: #00599C;"></i>
+                            <h5 class="card-title">C 语言</h5>
+                            <a href="c_intro.html" class="btn btn-primary">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 添加 C++ -->
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center shadow">
+                        <div class="card-body">
+                            <i class="fas fa-code fa-3x mb-3" style="color: #00599C;"></i>
+                            <h5 class="card-title">C++</h5>
+                            <a href="cpp_intro.html" class="btn btn-primary">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 添加 Python -->
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center shadow">
+                        <div class="card-body">
+                            <i class="fab fa-python fa-3x mb-3" style="color: #3776AB;"></i>
+                            <h5 class="card-title">Python</h5>
+                            <a href="python_intro.html" class="btn btn-primary">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- 添加 Java -->
+                <div class="col-md-4 mb-4">
+                    <div class="card text-center shadow">
+                        <div class="card-body">
+                            <i class="fab fa-java fa-3x mb-3" style="color: #007396;"></i>
+                            <h5 class="card-title">Java</h5>
+                            <a href="java_intro.html" class="btn btn-primary">了解更多</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+
+
+        <!-- 兴趣爱好 -->
+        <section class="mt-5">
+            <h2>兴趣爱好</h2>
+            <p>我喜欢编程、音乐、阅读和运动。</p>
+            <div class="row">
+                <div class="col-md-3 mb-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="fas fa-code fa-3x mb-2" style="color: #E44D26;"></i>
+                            <h5 class="card-title">
+                                <a href="programming.html" class="text-dark">编程</a>
+                            </h5>
+                            <p class="card-text">热爱编写代码，探索技术的无穷可能。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="fas fa-music fa-3x mb-2" style="color: #1DB954;"></i>
+                            <h5 class="card-title">
+                                <a href="pages/music.html" class="text-dark">音乐</a>
+                            </h5>
+                            <p class="card-text">喜欢听音乐，偶尔尝试创作。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="fas fa-book fa-3x mb-2" style="color: #F39C12;"></i>
+                            <h5 class="card-title">
+                                <a href="reading.html" class="text-dark">阅读</a>
+                            </h5>
+                            <p class="card-text">热衷于阅读各种书籍，拓宽视野。</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <i class="fas fa-running fa-3x mb-2" style="color: #3498DB;"></i>
+                            <h5 class="card-title">
+                                <a href="sports.html" class="text-dark">运动</a>
+                            </h5>
+                            <p class="card-text">喜欢锻炼身体，保持健康生活。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+        </section>
+
+
+
+
+        <!-- 社交媒体链接 -->
+        <section class="mt-5 text-center">
+            <h2>社交媒体</h2>
+            <a href="https://qq.com" class="btn btn-outline-dark">
+                <i class="fab fa-qq"></i> QQ
+            </a>
+            <a href="https://weixin.qq.com" class="btn btn-outline-primary">
+                <i class="fab fa-weixin"></i> 微信
+            </a>
+            <a href="tel:+8613800138000" class="btn btn-outline-success">
+                <i class="fas fa-phone"></i> 电话
+            </a>
+            <a href="mailto:your_email@gmail.com" class="btn btn-outline-info">
+                <i class="fas fa-envelope"></i> 邮箱
+            </a>
+        </section>
+
+    </main>
+
+    <!-- 底部 -->
+    <footer class="bg-dark text-white text-center py-3">
+        <p>&copy; 2024 [bluexuefeng] | 版权所有</p>
     </footer>
-    <script>
-        document.querySelectorAll('.project-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                alert('你点击了 ' + e.target.innerText + '！');
-            });
-        });
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="js/scripts.js">
+        // 这里可以添加更多的动态交互功能
     </script>
 </body>
 </html>
