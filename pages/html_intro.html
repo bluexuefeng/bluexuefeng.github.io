@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 介绍</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f0f4f8, #d9e4f5);
+            color: #333;
+            font-family: 'Arial', sans-serif;
+        }
+        .content {
+            margin-top: 30px;
+        }
+        .back-home {
+            margin-bottom: 20px;
+        }
+        .additional-info {
+            display: none;
+            margin-top: 15px;
+            padding: 10px;
+            background-color: #e9ecef;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="back-home text-center">
+        <a href="../index.html" class="btn btn-outline-primary">
+            <i class="fas fa-home"></i> 返回主页
+        </a>
+    </div>
+
+    <h1 class="text-center my-4">HTML 介绍</h1>
+
+    <div class="content">
+        <h2>什么是 HTML？</h2>
+        <p>HTML（超文本标记语言）是构建网页的标准标记语言。它用于描述网页的结构和内容，主要通过标记元素来实现。</p>
+        <button class="btn btn-info" onclick="toggleInfo('info-html')">更多关于 HTML</button>
+        <div id="info-html" class="additional-info">
+            <p>HTML 允许你使用各种标签来创建文本、链接、图像等内容。它是网页设计的基础。</p>
+        </div>
+
+        <h2>HTML 的基本结构</h2>
+        <pre>
+        <code>
+        &lt;!DOCTYPE html&gt;
+        &lt;html lang="zh"&gt;
+        &lt;head&gt;
+            &lt;meta charset="UTF-8"&gt;
+            &lt;title&gt;页面标题&lt;/title&gt;
+        &lt;/head&gt;
+        &lt;body&gt;
+            &lt;h1&gt;欢迎来到我的网站&lt;/h1&gt;
+            &lt;p&gt;这是一个段落&lt;/p&gt;
+        &lt;/body&gt;
+        &lt;/html&gt;
+        </code>
+        </pre>
+
+        <h2>HTML 的常见标签</h2>
+        <ul>
+            <li>&lt;h1&gt; 到 &lt;h6&gt;：标题标签</li>
+            <li>&lt;p&gt;：段落标签</li>
+            <li>&lt;a&gt;：超链接标签</li>
+            <li>&lt;img&gt;：图像标签</li>
+            <li>&lt;div&gt;：区块标签</li>
+        </ul>
+        <button class="btn btn-info" onclick="toggleInfo('info-tags')">更多关于标签</button>
+        <div id="info-tags" class="additional-info">
+            <p>这些标签用于创建网页的结构和内容。你可以使用 CSS 来美化这些标签，并使用 JavaScript 实现动态效果。</p>
+        </div>
+
+        <h2>总结</h2>
+        <p>HTML 是网页构建的基础，通过学习 HTML，你可以创建出结构良好的网页。继续深入学习，掌握 CSS 和 JavaScript，将使你能够制作出更丰富和动态的网页内容。</p>
+    </div>
+</div>
+
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script>
+    function toggleInfo(infoId) {
+        const infoDiv = document.getElementById(infoId);
+        if (infoDiv.style.display === "none" || infoDiv.style.display === "") {
+            infoDiv.style.display = "block";
+        } else {
+            infoDiv.style.display = "none";
+        }
+    }
+</script>
+
+</body>
+</html>

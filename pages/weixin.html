@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的微信二维码</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #f0f4f8, #d9e4f5);
+            color: #333;
+            font-family: 'Arial', sans-serif;
+        }
+        .content {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .back-home {
+            margin-bottom: 20px;
+        }
+        .qr-code {
+            display: none;  /* 默认隐藏二维码 */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="back-home text-center">
+        <a href="../index.html" class="btn btn-outline-primary">
+            <i class="fas fa-home"></i> 返回主页
+        </a>
+    </div>
+
+    <h1 class="text-center my-4">我的微信二维码</h1>
+
+    <div class="content">
+        <p>点击下面的按钮查看我的微信二维码。</p>
+        <button class="btn btn-info" onclick="toggleQRCode()">查看二维码</button>
+
+        <div id="qr-code" class="qr-code">
+            <img src="../assets/images/weixin.jpg" alt="我的微信二维码" class="img-fluid" style="max-width: 300px;">
+        </div>
+    </div>
+</div>
+
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<script>
+    function toggleQRCode() {
+        const qrCodeDiv = document.getElementById('qr-code');
+        if (qrCodeDiv.style.display === "none" || qrCodeDiv.style.display === "") {
+            qrCodeDiv.style.display = "block";  // 显示二维码
+        } else {
+            qrCodeDiv.style.display = "none";  // 隐藏二维码
+        }
+    }
+</script>
+
+</body>
+</html>
