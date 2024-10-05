@@ -95,6 +95,21 @@
         .btn-pause:hover {
             background-color: #e0a800;
         }
+        /* 搜索框样式 */
+        .search-bar {
+            margin-bottom: 20px;
+        }
+        .search-bar input {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ced4da;
+            outline: none;
+        }
+        .search-bar input:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
     </style>
 </head>
 <body>
@@ -107,6 +122,11 @@
     </div>
 
     <h1 class="text-center my-4">我喜欢的音乐</h1>
+
+    <!-- 搜索框 -->
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="搜索歌曲..." onkeyup="searchMusic()">
+    </div>
 
     <div class="music-list">
         <div class="music-item p-3 border mb-2" data-music="haiyouwo.mp3" data-lyrics="haiyouwo.txt">
@@ -121,30 +141,19 @@
         <div class="music-item p-3 border mb-2" data-music="daailiantian.mp3" data-lyrics="daailiantian.txt">
             <h5>🎵 大爱炼天 - 古月方源</h5>
         </div>
-        <div class="music-item p-3 border mb-2" data-music="song2.mp3" data-lyrics="lyrics2.txt">
-            <h5>🎵 歌曲 2 - 歌手 2</h5>
+        <div class="music-item p-3 border mb-2" data-music="zhuangdiqiu.mp3" data-lyrics="zhuangdiqiu.txt">
+            <h5>🎵 撞地球 - 鱼儿七</h5>
         </div>
-        <div class="music-item p-3 border mb-2" data-music="song3.mp3" data-lyrics="lyrics3.txt">
-            <h5>🎵 歌曲 3 - 歌手 3</h5>
+        <div class="music-item p-3 border mb-2" data-music="shuoshuren.mp3" data-lyrics="shuoshuren.txt">
+            <h5>🎵 说书人 - 翻自 暗杠</h5>
         </div>
-        <div class="music-item p-3 border mb-2" data-music="haiyouwo.mp3" data-lyrics="haiyouwo.txt">
-            <h5>🎵 还有我 - 翻自(任贤齐)女生版</h5>
+        <div class="music-item p-3 border mb-2" data-music="musehuixiang.mp3" data-lyrics="musehuixiang.txt">
+            <h5>🎵 暮色回响 - 张韶涵</h5>
         </div>
-        <div class="music-item p-3 border mb-2" data-music="song2.mp3" data-lyrics="lyrics2.txt">
-            <h5>🎵 歌曲 2 - 歌手 2</h5>
+        <div class="music-item p-3 border mb-2" data-music="cang.mp3" data-lyrics="cang.txt">
+            <h5>🎵 藏 - 徐梦圆&双笙</h5>
         </div>
-        <div class="music-item p-3 border mb-2" data-music="song3.mp3" data-lyrics="lyrics3.txt">
-            <h5>🎵 歌曲 3 - 歌手 3</h5>
-        </div>
-        <div class="music-item p-3 border mb-2" data-music="haiyouwo.mp3" data-lyrics="haiyouwo.txt">
-            <h5>🎵 还有我 - 翻自(任贤齐)女生版</h5>
-        </div>
-        <div class="music-item p-3 border mb-2" data-music="song2.mp3" data-lyrics="lyrics2.txt">
-            <h5>🎵 歌曲 2 - 歌手 2</h5>
-        </div>
-        <div class="music-item p-3 border mb-2" data-music="song3.mp3" data-lyrics="lyrics3.txt">
-            <h5>🎵 歌曲 3 - 歌手 3</h5>
-        </div>
+
     </div>
 
     <div class="music-player d-none">
@@ -167,6 +176,21 @@
 <script>
     let currentLyrics = [];
     let currentIndex = 0;
+
+    // 搜索功能
+    function searchMusic() {
+        const input = document.getElementById('search-input').value.toLowerCase();
+        const items = document.querySelectorAll('.music-item');
+        
+        items.forEach(item => {
+            const songTitle = item.querySelector('h5').textContent.toLowerCase();
+            if (songTitle.includes(input)) {
+                item.style.display = '';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
 
     // 音乐列表点击事件
     document.querySelectorAll('.music-item').forEach(item => {
@@ -254,4 +278,3 @@
 
 </body>
 </html>
-
